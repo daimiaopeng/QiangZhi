@@ -12,6 +12,8 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setWindowTitle('强智系统学生信息查询')
         self.setWindowIcon(QIcon('ui.ico'))
+         if token == "":
+            QtWidgets.QMessageBox.question(self, '错误', '从服务器获取数据失败，该软件目前不可用', QtWidgets.QMessageBox.Yes)
         self.list_url_school = list(url_school)
         self.comboBox_2.addItems(self.list_url_school)
         self.comboBox.addItems(date_list)
