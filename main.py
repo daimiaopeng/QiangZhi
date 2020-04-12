@@ -12,8 +12,8 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setWindowTitle('强智系统学生信息查询')
         self.setWindowIcon(QIcon('ui.ico'))
-         if token == "":
-            QtWidgets.QMessageBox.question(self, '错误', '从服务器获取数据失败，该软件目前不可用', QtWidgets.QMessageBox.Yes)
+        if token == "":
+            QtWidgets.QMessageBox.question(self, '错误', '从服务器获取token失败，请手动设置', QtWidgets.QMessageBox.Yes)
         self.list_url_school = list(url_school)
         self.comboBox_2.addItems(self.list_url_school)
         self.comboBox.addItems(date_list)
@@ -22,14 +22,23 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.pushButton.clicked.connect(self.query)
         self.pushButton_2.clicked.connect(self.setXq)
         self.pushButton_3.clicked.connect(self.setJwcUrl)
+        self.pushButton_4.clicked.connect(self.setToken)
         self.school_name = self.comboBox_2.currentText()
+
+    def setToken(self):
+        textToken = self.lineEdit_4.text().split()
+        if len(textToken) == 0:
+            QtWidgets.QMessageBox.question(self, '警告', 'token为空', QtWidgets.QMessageBox.Yes)
+            return
+        token = textToken
+        QtWidgets.QMessageBox.question(self, '提示', '设置成功', QtWidgets.QMessageBox.Yes, )
 
     def setXq(self):
         self.xq = self.lineEdit_2.text().strip()
         if self.xq == "":
             return
         self.comboBox.addItem(self.xq)
-        self.comboBox.setCurrentIndex(self.comboBox.count()-1)
+        self.comboBox.setCurrentIndex(self.comboBox.count() - 1)
 
     def setJwcUrl(self):
         self.school_url = self.lineEdit_3.text().strip()
@@ -49,7 +58,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         if self.school_name == "":
             QtWidgets.QMessageBox.question(self, '警告', '请选择学校', QtWidgets.QMessageBox.Yes)
             return
-        if self.school_url!="":
+        if self.school_url != "":
             self.school = School(self.school_url, self.xh)
         else:
             self.school = School(url_school[self.school_name], self.xh)
@@ -102,6 +111,9 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.dataUser = self.school.getUserInfo()
         if self.dataUser == {}:
             return
+        # {'fxzy': '无', 'xh': '2017403663', 'xm': '戴苗鹏', 'dqszj': '2017', 'usertype': '2', 'yxmc': '信息科学与工程学院', 'xz': 4,
+        #  'bj': '2017计科2', 'dh': '18873491529', 'email': '844362911@qq.com', 'rxnf': '2017', 'xb': '男',
+        #  'ksh': '17430421151329', 'nj': '2017', 'qq': None, 'zymc': '计算机科学与技术'}
         self.tableHead = ['姓名', '性别', '专业名称', '年级', '班级', '院系名称', '入学年份', '学制',
                           '电话号码', '电子邮箱', 'qq', '高考考号']
         self.tableView_2.horizontalHeader().setStretchLastSection(True)
