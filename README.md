@@ -1,4 +1,6 @@
-# 强智系统学生信息查询（2020年4月12日10:04:27 版本1.2）
+# 强智系统学生信息查询（2020年6月23日20:15:19 版本1.3）
+
+~~强智系统学生信息查询（2020年4月12日10:04:27 版本1.2）
 
 ~~强智系统学生信息查询（2020年2月24日15:25:08 版本1.1）~~
 
@@ -8,14 +10,14 @@
 
 点击其中的一个链接下载:
 
-- https://www.lanzous.com/ib9parc  (推荐使用此链接)
-- https://github.com/daimiaopeng/qiangzhi/releases/download/1.2/app.exe
+- https://2020.lanzous.com/i22Qwdz3rra  (推荐使用此链接)
+- https://github.com/daimiaopeng/qiangzhi/releases/download/1.3/app.exe
 
 ## 已知bug
 
-token不可用下查询会导致软件卡死崩溃
+某些情况下查询会导致软件卡死崩溃
 
-## 运行截图
+## 运行截图（运行界面截图不会随着版本更新而更新）
 
 ![l2o4J0.png](https://s2.ax1x.com/2020/01/08/l2o4J0.png)
 ![l2o5WV.png](https://s2.ax1x.com/2020/01/08/l2o5WV.png)
