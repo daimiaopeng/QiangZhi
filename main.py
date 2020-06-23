@@ -4,6 +4,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from ui import *
 from jwc import *
+import jwc
 
 
 class MyWindow(QMainWindow, Ui_MainWindow):
@@ -30,8 +31,8 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         if len(textToken) == 0:
             QtWidgets.QMessageBox.question(self, '警告', 'token为空', QtWidgets.QMessageBox.Yes)
             return
-        token = textToken
-        QtWidgets.QMessageBox.question(self, '提示', '设置成功', QtWidgets.QMessageBox.Yes, )
+        jwc.token = textToken[0]
+        QtWidgets.QMessageBox.question(self, '提示', '设置成功', QtWidgets.QMessageBox.Yes)
 
     def setXq(self):
         self.xq = self.lineEdit_2.text().strip()
